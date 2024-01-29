@@ -19,7 +19,6 @@ if [ $# -eq 0 ]
 then
     set -- su
 fi
-UID=$(id -u)
 exec docker exec -it -- "$cname" "$@"
 
 # vim:ts=4 sts=4 sw=4 et
