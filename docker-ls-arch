@@ -6,15 +6,15 @@
 set -e -u
 
 usage() {
-    printf 'Usage: %s CNAME\n' "${0##*/}"
+    printf 'Usage: %s TAG\n' "${0##*/}"
 }
 if [ $# -ne 1 ]
 then
     usage >&2
     exit 1
 fi
-cname="$1"
-json=$(docker manifest inspect "$cname")
+tag="$1"
+json=$(docker manifest inspect "$tag")
 jq -r '.manifests[] | .platform.os + "/" + .platform.architecture' <<EOF
 $json
 EOF
